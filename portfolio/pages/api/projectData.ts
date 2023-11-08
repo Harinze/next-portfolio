@@ -56,7 +56,7 @@ export const testimonials =  [
 
 
 export const skills = ["JavaScript", "Express.js",
-  "React.js", 
-  "Node.js","Problem Solving", "TypeScript", "GraphQl", "MongoDB/Mongoose", "Postgressql", "Docker", "GitHub", "Excellent Communication","Customer Support", "HTML", "CSS", "TailwindCss" 
+  "React.js", "NextJs", 
+  "Node.js","Problem Solving", "TypeScript", "GraphQl", "MongoDB/Mongoose", "Postgressql", "Docker", "GitHub", "Excellent Communication","Customer Support", "HTML", "CSS", "TailwindCss", "Couchbase"
 
 ]

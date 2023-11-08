@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import axios from "axios";
-//import emailjs from "emailjs-com";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "dotenv/config"
+import {mapApiKey} from "../pages/api/helperFunctions"
 
 const Contact = () => {
   const nameRef = useRef<HTMLInputElement | null>(null);
@@ -23,40 +23,18 @@ const Contact = () => {
         message: messageRef.current?.value,
       });
 
-      // if (response.status === 200) {
-      //   const templateParams = {
-      //     to_email: process.env.EMAIL,
-      //     from_name: nameRef.current?.value,
-      //     from_email: emailRef.current?.value,
-      //     message: messageRef.current?.value,
-      //   };
-
-        // const emailResponse = await emailjs.send(
-        //   process.env.SERVICE_ID as string,
-        //   process.env.TEMPLATE as string,
-        //   templateParams,
-        //   process.env.emailjsUser as string
-        // );
-
         if (response.status === 200) {
           setIsLoading(false);
           toast.success(response.data.message);
 
-         
         } else {
           setIsLoading(false);
           toast.error(response.data.message);
         }
-      // } else {
-      //   setIsLoading(false);
-      //   toast.error(response.data.message);
-      // }
     } catch (error) {
       setIsLoading(false);
       console.error(error);
-      toast.error(
-        `An error occurred! Try filling the form properly or I have the message already`
-      );
+      toast.error('An error occured!');
     }
   };
 
@@ -81,11 +59,8 @@ const Contact = () => {
             height="100%"
             title="map"
             className="absolute inset-0"
-            // frameBorder={0}
-            // marginHeight={0}
-            // marginWidth={0}
             style={{ filter: "opacity(0.7)" }}
-            src= "https://www.google.com/maps/embed/v1/place?q=Ikorodu,+Lagos,+Nigeria&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+            src={`https://www.google.com/maps/embed/v1/place?q=Ikorodu,+Lagos,+Nigeria&key=${mapApiKey}`}
           />
           <div className="bg-gray-900 relative flex flex-wrap py-6 rounded shadow-md">
             <div className="lg:w-1/2 px-6">

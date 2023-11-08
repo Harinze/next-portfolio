@@ -9,10 +9,12 @@ const formDataSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true, 
+    index: true 
   },
   message: {
     type: String,
-    required: true, 
+    required: true,
+    index: true 
   },
 });
 

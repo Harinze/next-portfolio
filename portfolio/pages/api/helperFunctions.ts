@@ -1,4 +1,4 @@
-export const mapApiKey = "https://www.google.com/maps/embed/v1/place?q=Ikorodu,+Lagos,+Nigeria&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+export const mapApiKey = "AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
 
 export const validateEmail = (email: string) => {
   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;

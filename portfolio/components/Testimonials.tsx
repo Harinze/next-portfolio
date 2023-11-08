@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-key */
 import React from "react";
 import { UsersIcon } from "@heroicons/react/24/solid";
 import { testimonials } from "../pages/api/projectData";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTerminal } from "@fortawesome/free-solid-svg-icons";
 
@@ -29,12 +27,6 @@ const Testimonials = () => {
                     src={testimonial.image}
                     className="w-12 rounded-full flex-shrink-0 object-cover object-center"
                   />
-
-                  {/* <Image
-                    alt="testimonial"
-                    src={testimonial.image}
-                    className="w-12 rounded-full flex-shrink-0 object-cover object-center"
-                  /> */}
                   <span className="flex-grow flex flex-col pl-4">
                     <span className="title-font font-medium text-white">
                       {testimonial.name}
