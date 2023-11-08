@@ -108,7 +108,6 @@ const sendEmail = async () => {
   }
 };
 
-// Schedule the cron job to run the email sending process
 cron.schedule('* * * * *', () => {
   sendEmail();
 });

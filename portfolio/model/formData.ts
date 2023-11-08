@@ -4,15 +4,15 @@ import mongoose from "mongoose";
 const formDataSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true, // Make the 'name' field required
+    required: true, 
   },
   email: {
     type: String,
-    required: true, // Make the 'email' field required
+    required: true, 
   },
   message: {
     type: String,
-    required: true, // Make the 'message' field required
+    required: true, 
   },
 });
 

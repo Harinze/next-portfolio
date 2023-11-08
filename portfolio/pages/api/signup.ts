@@ -1,27 +1,17 @@
-/* eslint-disable import/no-anonymous-default-export */
-
-import type { NextApiRequest, NextApiResponse } from 'next'
-import {validateEmail} from '../../pages/api/helperFunctions'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import {validateEmail} from '../../pages/api/helperFunctions';
 import connectDB from "../../db/db";
 import FormData from "../../model/formData";
 connectDB();
 
-
-// const validateEmail = (email: string) => {
-//   const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-//   return emailRegex.test(email);
-// };
-
 export default async (req:NextApiRequest, res:NextApiResponse) => {
   if (req.method === "POST") {
     const { name, email, message } = req.body;
-
-    // Check if name, email, and message are provided
     if (!name) {
       return res.status(400).json({
         message: "Name is a required field.",
       });
-    }
+    };
 
     if (!email) {
       return res.status(400).json({
@@ -50,7 +40,12 @@ export default async (req:NextApiRequest, res:NextApiResponse) => {
         });
       }
 
-      const formData = new FormData({ name, email, message });
+      const formData = new FormData({
+         name,
+         email,
+          message 
+        });
+        
       await formData.save();
 
       return res.status(200).json({
