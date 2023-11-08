@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
 
-      const existingMessages = await FormData.find({ name, email, message });
+      const existingMessages = await FormData.find({ email, message });
 
       if (existingMessages.length > 0) {
         return res.status(400).json({
