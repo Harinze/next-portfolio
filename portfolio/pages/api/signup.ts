@@ -8,14 +8,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
 
-
-
     if (!name && !email && !message) {
       return res.status(400).json({
         message: 'All fields are required!',
       });
     }
-
 
     if (!name) {
       return res.status(400).json({
@@ -23,15 +20,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-     if (!message) {
-      return res.status(400).json({
-        message: 'Message field is required!',
-      });
-    }
-
      if (!email) {
       return res.status(400).json({
         message: 'Email field is required!',
+      });
+    }
+
+     if (!message) {
+      return res.status(400).json({
+        message: 'Message field is required!',
       });
     }
 
@@ -61,9 +58,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
     } catch (error:any) {
       console.error('Error:', `${error.response.data.message}`);
-      return res.status(500).json({ message: 'An error occurred.' });
+      return res.status(500).json({ message: `${error.response.data.message}`});
     }
   } else {
     res.status(405).end();
   }
 };
+
+
