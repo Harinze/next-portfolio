@@ -8,9 +8,30 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const { name, email, message } = req.body;
 
-    if (!name || !email || !message) {
+
+
+    if (!name && !email && !message) {
       return res.status(400).json({
         message: 'All fields are required!',
+      });
+    }
+
+
+    if (!name) {
+      return res.status(400).json({
+        message: 'Name field is required!',
+      });
+    }
+
+     if (!message) {
+      return res.status(400).json({
+        message: 'Message field is required!',
+      });
+    }
+
+     if (!email) {
+      return res.status(400).json({
+        message: 'Email field is required!',
       });
     }
 
@@ -34,12 +55,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         await formData.save();
 
         return res.status(200).json({
-          message: 'Your message has been sent successfully.',
+          message: 'Your message has been sent successfully!',
           formData,
         });
       }
-    } catch (error) {
-      console.error('Error while saving to MongoDB:', error);
+    } catch (error:any) {
+      console.error('Error:', `${error.response.data.message}`);
       return res.status(500).json({ message: 'An error occurred.' });
     }
   } else {

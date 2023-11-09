@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "dotenv/config"
 import {mapApiKey} from "../pages/api/helperFunctions"
 
 const Contact = () => {
@@ -27,14 +26,12 @@ const Contact = () => {
           setIsLoading(false);
           toast.success(response.data.message);
 
-        } else {
-          setIsLoading(false);
-          toast.error(response.data.message);
-        }
-    } catch (error) {
+        } 
+        
+    } catch (error:any) {
       setIsLoading(false);
-      console.error(error);
-      toast.error('An error occured!');
+      console.log("error:", `${error.response.data.message}`);
+      toast.error(`${error.response.data.message}`);
     }
   };
 
@@ -106,7 +103,7 @@ const Contact = () => {
               type="text"
               id="name"
               name="name"
-              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-green-400 focus:ring-2 focus:ring-green-400 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               ref={nameRef}
             />
           </div>
@@ -118,7 +115,7 @@ const Contact = () => {
               type="email"
               id="email"
               name="email"
-              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-green-400 focus:ring-2 focus:ring-green-400 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               ref={emailRef}
             />
           </div>
@@ -132,13 +129,13 @@ const Contact = () => {
             <textarea
               id="message"
               name="message"
-              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-green-400 focus:ring-2 focus:ring-green-400 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
               ref={messageRef}
             />
           </div>
           <button
             type="submit"
-            className={`text-white bg-yellow-600 border-0 py-2 px-6 focus:outline-none hover-bg-green-400 rounded text-lg ${
+            className={`text-white bg-yellow-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-400 rounded text-lg ${
               isLoading ? "opacity-50 cursor-not-allowed" : ""
             }`}
             disabled={isLoading}
