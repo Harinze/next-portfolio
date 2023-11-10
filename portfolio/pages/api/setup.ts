@@ -43,7 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       if (existingMessages.length > 0) {
         return res.status(400).json({
-          message: 'You have already sent this message before.',
+          message: 'You have already sent this message',
         });
       } else {
         const formData = new FormData({ name, email, message });
