@@ -23,3 +23,8 @@ export const validateEmail = (email: string) => {
 
   return true;
 };
+
+export const emailjsUser = "8Er8aJtt3Q5DM1IqH"
+export const mail = "kingsleyibe66@gmail.com"
+export const SERVICE_ID = "serviceid"
+export const TEMPLATE = "template_kga9xdg"

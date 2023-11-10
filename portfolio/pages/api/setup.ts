@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import {validateEmail} from '../../pages/api/helperFunctions';
-import connectDB from "../../db/db";
-import FormData from "../../model/formData";
+import { validateEmail } from './helperFunctions';
+import connectDB from '../../db/db';
+import FormData from '../../model/formData';
 connectDB();
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -20,13 +20,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-     if (!email) {
+    if (!email) {
       return res.status(400).json({
         message: 'Email field is required!',
       });
     }
 
-     if (!message) {
+    if (!message) {
       return res.status(400).json({
         message: 'Message field is required!',
       });
@@ -39,30 +39,36 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-
-      const existingMessages = await FormData.find({ email, message });
+      const existingMessages = await FormData.find({ email, message }).maxTimeMS(60000);;
 
       if (existingMessages.length > 0) {
         return res.status(400).json({
           message: 'You have already sent this message before.',
         });
       } else {
-        
         const formData = new FormData({ name, email, message });
         await formData.save();
-
         return res.status(200).json({
           message: 'Your message has been sent successfully!',
           formData,
         });
       }
     } catch (error:any) {
-      console.error('Error:', `${error.response.data.message}`);
-      return res.status(500).json({ message: `${error.response.data.message}`});
+      console.error('Error:', error.message);
+      return res.status(500).json({ message: 'Internal server error.' });
     }
   } else {
     res.status(405).end();
   }
 };
+
+
+
+
+
+
+
+
+
 
 

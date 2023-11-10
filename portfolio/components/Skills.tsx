@@ -1,7 +1,7 @@
 import React from "react";
 import { skills } from "../pages/api/projectData";
 
-const Skills = () => {
+const Skills: React.FC = () => {
   return (
     <section id="skills">
       <div className="container px-5 py-10 mx-auto">

@@ -4,7 +4,7 @@ import { testimonials } from "../pages/api/projectData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTerminal } from "@fortawesome/free-solid-svg-icons";
 
-const Testimonials = () => {
+const Testimonials: React.FC = () => {
   return (
     <section id="testimonials">
       <div className="container px-5 py-10 mx-auto text-center">

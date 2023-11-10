@@ -1,36 +1,57 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState, FormEvent } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {mapApiKey} from "../pages/api/helperFunctions"
+import emailjs from "@emailjs/browser";
+import {
+  mapApiKey,
+  emailjsUser,
+  TEMPLATE,
+  mail,
+  SERVICE_ID,
+} from "../pages/api/helperFunctions";
 
-const Contact = () => {
+
+const Contact: React.FC = () => {
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const messageRef = useRef<HTMLTextAreaElement | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     setIsLoading(true);
 
     try {
-      const response = await axios.post("/api/signup", {
+      const response = await axios.post("/api/setup", {
         name: nameRef.current?.value,
         email: emailRef.current?.value,
         message: messageRef.current?.value,
       });
 
-        if (response.status === 200) {
+      if (response.status === 200) {
+        setIsLoading(false);
+        toast.success(response.data.message);
+        const templateParams = {
+          to_email: mail,
+          from_name: nameRef.current?.value,
+          from_email: emailRef.current?.value,
+          message: messageRef.current?.value,
+        };
+        const emailResponse = await emailjs.send(
+          SERVICE_ID,
+          TEMPLATE,
+          templateParams,
+          emailjsUser
+        );
+    
+        if (emailResponse.status === 200) {
           setIsLoading(false);
-          toast.success(response.data.message);
-
-        } 
-        
-    } catch (error:any) {
+        }
+      }
+    } catch (error: any) {
       setIsLoading(false);
-      console.log("error:", `${error.response.data.message}`);
       toast.error(`${error.response.data.message}`);
     }
   };
