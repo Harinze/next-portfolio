@@ -1,8 +1,8 @@
 
-const generateID = () => Math.random().toString(36).substring(2, 10);
+//const generateID = () => Math.random().toString(36).substring(2, 10);
 export const projects = [
   {
-    id: generateID(),
+    // id: generateID(),
     title: "QuickBite Food App",
     subtitle: "Food at Your Fingertips: The QuickBite Experience",
     description:
@@ -11,7 +11,7 @@ export const projects = [
     link: "https://quick-bite-app.netlify.app/",
   },
   {
-    id: generateID(),
+   // id: generateID(),
     title: "Budgetify",
     subtitle: "Expense Tracking and Budgeting APP",
     description:
@@ -20,7 +20,7 @@ export const projects = [
     link: "https://budgetify-team-favourz.netlify.app/",
   },
   {
-    id: generateID(),
+   // id: generateID(),
     title: "Mike and Angelo's Restaurant App",
     subtitle: "Delightful Dining, Mike and Angelo's Restaurant",
     description:
@@ -29,7 +29,7 @@ export const projects = [
     link: "http://www.mikeandangelos.com/home.html",
   },
   {
-    id: generateID(),
+   // id: generateID(),
     title: "Ajo Savings App",
     subtitle: "Empowering Your Financial Future",
     description:

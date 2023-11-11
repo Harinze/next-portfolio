@@ -5,6 +5,7 @@ const formDataSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true, 
+    index:true
   },
   email: {
     type: String,
