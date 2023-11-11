@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
           emailjsUser
         );
     
-        if (emailResponse.status === 200) {
+        if (emailResponse) {
           toast.success(
             "Your message has been received, and I will reach out to you shortly."
           );
