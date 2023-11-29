@@ -40,21 +40,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     try {
-      const existingMessages = await FormData.find({ email, message }).maxTimeMS(60000);
-
-      if (existingMessages.length !== 0) {
+    const existingMessages = await FormData.find({ email, message }).maxTimeMS(60000);
+   
+  if (existingMessages.length !== 0) {
         return res.status(400).json({
           message: 'You have already sent this message',
         });
-      } 
-        const formData = new FormData({ name, email, message });
-        await formData.save();
+      } else{
+         const formData = new FormData({ name, email, message });
+         await formData.save();
 
         return res.status(200).json({
           message: 'Your message has been sent successfully!',
           formData,
         });
-    
+
+      }
+      
     } catch (error:any) {
       console.error('Error:', error.message);
       return res.status(500).json({ message: 'Internal server error.' });

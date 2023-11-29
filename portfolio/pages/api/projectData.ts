@@ -1,8 +1,8 @@
 
-//const generateID = () => Math.random().toString(36).substring(2, 10);
+const generateID = () => Math.random().toString(36).substring(2, 10);
 export const projects = [
   {
-    // id: generateID(),
+    id: generateID(),
     title: "QuickBite Food App",
     subtitle: "Food at Your Fingertips: The QuickBite Experience",
     description:
@@ -11,7 +11,7 @@ export const projects = [
     link: "https://quick-bite-app.netlify.app/",
   },
   {
-   // id: generateID(),
+    id: generateID(),
     title: "Budgetify",
     subtitle: "Expense Tracking and Budgeting APP",
     description:
@@ -20,16 +20,15 @@ export const projects = [
     link: "https://budgetify-team-favourz.netlify.app/",
   },
   {
-   // id: generateID(),
-    title: "Mike and Angelo's Restaurant App",
-    subtitle: "Delightful Dining, Mike and Angelo's Restaurant",
-    description:
-      "Designed for local food enthusiasts, this restaurant app, developed using JavaScript, CSS, and HTML, offers a platform for food lovers while honing JavaScript DOM manipulation skills",
-    image: "./localres.png",
-    link: "http://www.mikeandangelos.com/home.html",
+    id: generateID(),
+    title: "BizPay App",
+    subtitle: "BizPay: Streamlining Business Monitoring",
+    description:"This BizPay app enhances business tracking, managed invoices, and provided alerts using technologies like ReactJS, Vite, TypeScript, MongoDB, and Express",
+    image: "./bizpayimage.png",
+    link: "https://bizpaystartup.netlify.app/",
   },
   {
-   // id: generateID(),
+   id: generateID(),
     title: "Ajo Savings App",
     subtitle: "Empowering Your Financial Future",
     description:
